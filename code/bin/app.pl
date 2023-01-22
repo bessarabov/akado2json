@@ -58,7 +58,7 @@ sub get_xml {
     $browser->cookie_jar( {} );
 
     my $request = POST(
-    	'https://office.akado.ru/user/login.xml',
+        'https://office.akado.ru/user/login.xml',
         Content => [
             login    => $login,
             password => $password,
@@ -67,12 +67,12 @@ sub get_xml {
 
     my $response = $browser->request($request);
 
-	if ($response->is_success) {
-		my $xml = $response->decoded_content();
-		return $xml;
-	} else {
-		die "Can't login to akado: " .  $response->status_line();
-	}
+    if ($response->is_success) {
+        my $xml = $response->decoded_content();
+        return $xml;
+    } else {
+        die "Can't login to akado: " .  $response->status_line();
+    }
 }
 
 sub get_balance {
